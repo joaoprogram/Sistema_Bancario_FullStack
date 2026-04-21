@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='banco.css')}}">
+</head>
+<body>
+    <div class="main_frame">
+        <div class="imagem_login">
+            <img src="https://belalbornoz.com.br/wp-content/uploads/2023/06/jovem-atraente-morena-com-cabelo-curto-e-muitas-sacolas-de-compras.jpg" alt="">
+        </div>
+        <div class="login">
+            <label for="">Bem vindo ao Banco!</label>
+            <form action="{{ url_for('conta') }}" method="GET">
+                <button type="submit" class="btn">Criar conta</button>
+            </form>
+                        <form action="{{ url_for('login') }}" method="GET">
+                <button type="submit" class="btn">Entrar</button>
+        </div>
+    </div>
+</body>
+</html>

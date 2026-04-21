@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='cadastro.css')}}">
+</head>
+<body>
+    <div class="main_frame">
+        <div class="esquerda">
+            
+        </div>
+        <div class="direita">
+        <form action="" method="POST">
+            <input class="input_cap" type="text" name="nome" placeholder="Digite seu nome" required><br>
+            <input type="email" name="email" placeholder="Digite seu email" required><br>
+            <input type="text" name="cpf" placeholder="Digite um cpf válido" required ><br>
+            <input type="password" name="senha" placeholder="Crie sua senha" required><br>
+            <input type="password" name="senha" placeholder="Confirme sua senha" required><br>
+            <button type="submit" class="btn">Criar conta</button><br>
+        </form>
+
+        <form action="{{ url_for('home') }}" method="GET">
+            <button type="submit" class="btn">Voltar</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
