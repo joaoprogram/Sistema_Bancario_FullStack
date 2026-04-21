@@ -5,10 +5,10 @@ def conectar():
     try:
         conn = psycopg2.connect(
             host="localhost",
-            database="dados",
+            database="",
             user="postgres",
-            password="20031997",
-            port="5432"
+            password="",
+            port=""
         )
         return conn
     except Error as e:
