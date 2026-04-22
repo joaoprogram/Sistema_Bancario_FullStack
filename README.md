@@ -9,3 +9,5 @@ Tecnologias:
 - Python
 - Flask
 - SQL/ PostgreSQL
+- Html
+- Css
