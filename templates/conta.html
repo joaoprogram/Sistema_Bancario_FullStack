@@ -4,19 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olá {nome}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='conta.css')}}">
 </head>
 <body>
-    <div>
-        <h1>
-            Bem vindo ao Banco
-        </h1>
-        <label for="">Saldo da conta</label><br>
-        <button>Depositar</button><br>
-        <button>Sacar</button><br>
-
-        <form action="{{ url_for('home') }}" method="GET">
-            <button type="submit" class="btn">Sair</button>
-        </form>
+    <div class="main">
+        <div>
+            <h1>
+                Bem vindo ao Banco
+            </h1><br>
+            <label for="">Saldo da conta
+                <p>numeros</p>
+            </label><br>
+            <button>Depositar</button><br>
+            <button>Sacar</button><br>
+        </div>
+        <div class="container">
+            <table>
+                <tr>
+                    <td>
+                        <button class="btn">Pix</button>
+                        <button class="btn">Gerar boleto</button>
+                        <button class="btn">Informações</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn">Cofrinhos</button>
+                        <button class="btn">Investir</button>
+                        <button class="btn">Recarregar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <form action="{{ url_for('home') }}" method="GET">
+                <button type="submit" class="sair">Sair</button>
+            </form>
+        </div>
     </div>
 </body>
+
+<footer>
+    <div class="rodape">
+    </div>
+</footer>
+
 </html>

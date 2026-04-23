@@ -52,5 +52,9 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/conta')
+def entrada():
+    return render_template('conta.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
