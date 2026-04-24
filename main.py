@@ -1,14 +1,17 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 from contas import Conta
-import hashlib
-from conexao_banco_de_dados import inserir_usuario
+from conexao_banco_de_dados import inserir_usuario, ver_dados
 import datetime
+import psycopg2
+from ferramentas import codificar
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+key = os.getenv("key")
 
 app = Flask(__name__)
-
-def hash(txt):
-    hash_obj = hashlib.sha256(txt.encode('utf-8'))
-    return hash_obj.hexdigest()
+app.secret_key = 'key'
 
 @app.route('/')
 def home():
@@ -30,7 +33,7 @@ def conta():
         
         senha = request.form.get('senha')
         if len(senha) >= 6:
-            senha = hash(senha)
+            senha = codificar(senha)
         else:
             return 'Senha inválida'
 
@@ -41,14 +44,22 @@ def conta():
 
     return render_template('cadastro.html')
 
+from flask import request, render_template, redirect, url_for, session
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
         confirma_cpf = request.form.get('cpf_confirma')
         confirma_senha = request.form.get('senha_confirma')
 
-        print(confirma_cpf)
-        print(confirma_senha)
+        user = ver_dados(confirma_cpf, confirma_senha)
+
+        if user:
+            nome = user[0]
+            session['usuario'] = nome  # salva o nome
+            return redirect(url_for('entrada'))
+        else:
+            return 'Entrada inválida'
 
     return render_template('login.html')
 

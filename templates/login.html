@@ -9,7 +9,7 @@
 <body>
     <div class="container"> 
         <div class="login">
-            <form action="{{ url_for('entrada') }}" method="GET">
+            <form action="{{ url_for('login') }}" method="POST">
                 <input type="text" name="cpf_confirma" placeholder="Digite seu cpf" required></input><br>
                 <input type="password" name="senha_confirma" placeholder="Digite sua senha" required autocomplete="new-password"></input><br>
                 <button class="btn" type="submit" class="btn">Logar</button>

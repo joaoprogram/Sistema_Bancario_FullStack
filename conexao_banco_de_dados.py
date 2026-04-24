@@ -1,14 +1,21 @@
 import psycopg2
 from psycopg2 import Error
+import os
+from dotenv import load_dotenv
+load_dotenv()
+from ferramentas import codificar
+
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_PORT = os.getenv("DB_PORT")
 
 def conectar():
     try:
         conn = psycopg2.connect(
             host="localhost",
-            database="usuarios",
+            database="dados",
             user="postgres",
-            password="DB_PASSWORD",
-            port="DB_PORT"
+            password=DB_PASSWORD,
+            port=DB_PORT
         )
         return conn
     except Error as e:
@@ -51,3 +58,21 @@ CREATE TABLE usuarios (
     senha TEXT NOT NULL
 );
 '''
+
+def ver_dados(cpf, senha):
+    senha = codificar(senha)
+    conn = conectar()
+    
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM usuarios WHERE cpf = %s AND senha = %s",
+        (cpf, senha)
+    )
+
+    user = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return user

@@ -1,0 +1,15 @@
+[33m5c326d6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: pull origin main --rebase: Fast-forward
+[33m0fa0971[m HEAD@{1}: rebase (abort): returning to refs/heads/main
+[33m0fa0971[m HEAD@{2}: rebase (abort): returning to refs/heads/main
+[33maf5d54a[m HEAD@{3}: commit: upgrade gráfico
+[33m36fde19[m HEAD@{4}: commit: rename pasta do banco de dados
+[33m88d5afb[m HEAD@{5}: commit: utilizando .env
+[33m6a95b3d[m HEAD@{6}: commit (merge): recuperando db.py
+[33md731a14[m HEAD@{7}: commit (cherry-pick): resolve conflito gitignore
+[33m0fa0971[m HEAD@{8}: checkout: moving from 841da9ea4f5ba7ee8f2e176d8d3fa7014b1fa41a to main
+[33m841da9e[m HEAD@{9}: commit: implementando tela login conta
+[33m9cea8f9[m HEAD@{10}: pull origin main --rebase (start): checkout 9cea8f9395132d6a36993c3d1497a926cd2c7fb7
+[33m0fa0971[m HEAD@{11}: commit: implementando tela conta logada
+[33ma0343d9[m HEAD@{12}: commit: criando tela de conta logada
+[33m9d92bd8[m HEAD@{13}: Branch: renamed refs/heads/master to refs/heads/main
+[33m9d92bd8[m HEAD@{15}: commit (initial): upando projeto
