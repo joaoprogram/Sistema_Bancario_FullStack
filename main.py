@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, session, url_for
-from contas import Conta
 from conexao_banco_de_dados import inserir_usuario, ver_dados, depositar, sacar, pegar_saldo
 import datetime
 import psycopg2
