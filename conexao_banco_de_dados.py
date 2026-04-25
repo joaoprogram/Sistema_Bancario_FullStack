@@ -76,3 +76,45 @@ def ver_dados(cpf, senha):
     conn.close()
 
     return user
+
+def sacar(valor, cpf):
+    conn = conectar()
+
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        "UPDATE usuarios SET saldo = saldo - %s WHERE cpf = %s"
+        , (valor, cpf)
+    )
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def depositar(valor, cpf):
+    conn = conectar()
+
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        "UPDATE usuarios SET saldo = saldo + %s WHERE cpf = %s"
+        , (valor, cpf)
+    )
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def pegar_saldo(cpf):
+    conn = conectar()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT saldo FROM usuarios WHERE cpf = %s", (cpf,))
+    resultado = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    if resultado:
+        return resultado[0] if resultado[0] is not None else 0
+    return 0

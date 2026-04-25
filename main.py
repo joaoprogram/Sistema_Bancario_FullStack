@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 from contas import Conta
-from conexao_banco_de_dados import inserir_usuario, ver_dados
+from conexao_banco_de_dados import inserir_usuario, ver_dados, depositar, sacar, pegar_saldo
 import datetime
 import psycopg2
 from utilidades import codificar, validar_senha
@@ -54,17 +54,35 @@ def login():
         user = ver_dados(confirma_cpf, confirma_senha)
 
         if user:
-            nome = user[0]
-            session['usuario'] = nome
+            print(user)
+            nome = user[1]
+            session['cpf'] = confirma_cpf
+            session['nome'] = nome
             return redirect(url_for('entrada'))
         else:
             return 'Entrada inválida'
 
     return render_template('login.html')
 
-@app.route('/conta')
+@app.route('/conta', methods=['GET', 'POST'])
 def entrada():
-    return render_template('conta.html')
+    if request.method == 'POST':
+
+        valor = float(request.form.get('valor'))
+        cpf = session.get('cpf')
+        acao = request.form.get('acao')
+
+        if acao == 'deposito':
+            depositar(valor, cpf)
+
+        elif acao == 'saque':
+            sacar(valor, cpf)
+
+    nome = session.get('nome')
+    cpf = session.get('cpf')
+    saldo = pegar_saldo(cpf)
+
+    return render_template('conta.html', nome=nome, saldo=saldo)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -38,12 +38,12 @@ body {
 
 .texto {
     position: absolute;
-    top: 15%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     
     color: white;
-    font-size: 20px;
+    font-size: 33px;
     font-weight: bold;
 
     width: 100vh;
