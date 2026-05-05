@@ -10,7 +10,7 @@ load_dotenv()
 key = os.getenv("key")
 
 app = Flask(__name__)
-app.secret_key = 'key'
+app.secret_key = key
 
 @app.route('/')
 def home():
@@ -84,4 +84,4 @@ def entrada():
     return render_template('conta.html', nome=nome, saldo=saldo)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

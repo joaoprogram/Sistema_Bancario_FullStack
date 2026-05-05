@@ -111,3 +111,18 @@ input:hover {
 input::placeholder {
     color: #F5F5F5;
 }
+
+a {
+    color: rgb(32, 32, 32);
+    text-decoration: none;
+
+    font-size: 12px;
+    margin: 4px;
+
+    transition: 0.4s;
+}
+
+a:hover {
+    color: azure;
+    transition: 0.4s;
+}
